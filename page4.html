@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why You're My Best Friend!</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+    /* Center everything like page 2 */
+    .page-4 .content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        width: 100%;
+    }
+    
+    .page-4 .reasons-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        max-width: 500px;
+    }
+    
+    .page-4 .reason-display {
+        width: 100%;
+        margin: 20px 0;
+        border: none !important;
+    }
+    
+    .page-4 .next-reason-btn {
+        margin: 10px auto;
+    }
+    
+    .page-4 #completionMessage {
+        width: 100%;
+        max-width: 500px;
+        margin: 20px auto;
+        border: none !important;
+    }
+</style>
+</head>
+<body class="page-4">
+    <!-- Your existing HTML content remains the same -->
+    <div class="container fade-in">
+        <div class="content">
+            <div class="friendship-heart">💖</div>
+            <h1>Why You're My Best Friend!</h1>
+            
+            <div class="reasons-container">
+                <div class="reason-display" id="currentReason">
+                    Click here to know!
+                </div>
+                
+                <button class="next-reason-btn" id="nextReasonBtn" onclick="showNextReason()">
+                    Reason
+                </button>
+            </div>
+
+            <div class="completion-message" id="completionMessage">
+                <p>🎉 lets go next hehe </p>
+                <button class="next-btn" onclick="navigateToPage('page5.html')">Continue Journey</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Your existing JavaScript remains the same
+        const reasons = [
+            "I feel so happy whenever I'm with you.",
+            "You're just like me… bhondu hehe😂",
+            "I feel so comfortable around you.",
+            "You always listen to me so carefully, even when the things I say aren't that important hehe",
+            "You're my best friend, and there are so many reasons… I can't even list them all 🫠.",
+        ];
+
+        let currentReasonIndex = 0;
+
+        function showNextReason() {
+            const reasonDisplay = document.getElementById('currentReason');
+            const nextReasonBtn = document.getElementById('nextReasonBtn');
+            const completionMessage = document.getElementById('completionMessage');
+
+            reasonDisplay.textContent = reasons[currentReasonIndex];
+
+            reasonDisplay.classList.add('fade-in');
+            setTimeout(() => {
+                reasonDisplay.classList.remove('fade-in');
+            }, 500);
+
+            currentReasonIndex++;
+
+            if (currentReasonIndex >= reasons.length) {
+                nextReasonBtn.style.display = 'none';
+                completionMessage.style.display = 'block';
+            }
+        }
+
+        function navigateToPage(page) {
+            document.querySelector('.container').classList.add('fade-out');
+            setTimeout(() => {
+                window.location.href = page;
+            }, 500);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('completionMessage').style.display = 'none';
+        });
+    </script>
+</body>
+</html>
